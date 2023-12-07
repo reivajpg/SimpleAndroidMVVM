@@ -33,7 +33,7 @@ jobs:
         run: |
           #mkdir -p apk-release/
           ls -R ${{ env.main_project_module }}/build/outputs/apk/release/
-          cp -b ${{ env.main_project_module }}/build/outputs/apk/release/ apk-release/
+          mv -b ${{ env.main_project_module }}/build/outputs/apk/release/ apk-release/
           ls -Rlh apk-release/
           git config user.name github-actions
           git config user.email github-actions@github.com
