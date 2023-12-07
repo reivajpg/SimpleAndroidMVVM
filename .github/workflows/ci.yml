@@ -1,5 +1,9 @@
 name: Android CI
 
+env:
+  # The name of the main module repository
+  main_project_module: app
+
 on:
   push:
     branches: [ "ci/cd", "master" ]
@@ -25,3 +29,16 @@ jobs:
       - name: Build app
         run: ./gradlew build #assemble
 
+      - name: Save and Push Build
+        run: |
+          #mkdir -p build/
+          ls -R ${{ env.main_project_module }}/build/outputs/apk/release/
+          #mv -b ${{matrix.project}}/.pio/build/*/firmware.* ${{matrix.project}}/build_output/
+          #ls -Rlh /build_output/
+          #git config user.name github-actions
+          #git config user.email github-actions@github.com
+          #if git diff --exit-code; then
+           #  git add build_output/
+           #  git commit -am "GH Action Files added $(date +"%d-%m-%y_%T")"
+           #  git push 
+          #fi
